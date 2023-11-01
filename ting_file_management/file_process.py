@@ -3,7 +3,10 @@ import sys
 
 def process(path_file, instance):
     """Processa o arquivo e o adiciona à fila, se ainda não estiver presente"""
-    if path_file in [item["nome_do_arquivo"] for item in instance._data]:
+    lower_case_path_file = path_file.lower()
+    if lower_case_path_file in [
+        item["nome_do_arquivo"] for item in instance._data
+    ]:
         return
     else:
         with open(path_file, "r") as file:

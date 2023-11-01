@@ -18,4 +18,22 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    results = []
+    for data in instance._data:
+        file_path = data["nome_do_arquivo"]
+        with open(file_path, "r") as file:
+            lines = file.readlines()
+            occurrences = []
+            for line_number, line in enumerate(lines, start=1):
+                if word.lower() in line.lower():
+                    occurrences.append(
+                        {"linha": line_number, "conteudo": line.strip()}
+                    )
+            if occurrences:
+                result = {
+                    "palavra": word,
+                    "arquivo": file_path,
+                    "ocorrencias": occurrences,
+                }
+                results.append(result)
+    return results

@@ -11,9 +11,13 @@ def process(path_file, instance):
     else:
         with open(path_file, "r") as file:
             data = [line.strip() for line in file]
-            instance.enqueue(
-                {"nome_do_arquivo": path_file, "linhas_do_arquivo": data}
-            )
+            result = {
+                "nome_do_arquivo": path_file,
+                "qtd_linhas": len(data),
+                "linhas_do_arquivo": data,
+            }
+            instance.enqueue(result)
+        print(result)
 
 
 def remove(instance):

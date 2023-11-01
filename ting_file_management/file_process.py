@@ -17,6 +17,8 @@ def remove(instance):
         print(
             f"Arquivo {removed_item['nome_do_arquivo']} removido com sucesso."
         )
+    else:
+        print("Não há elementos")
 
 
 def file_metadata(instance, position):
